@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>QingEditor</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link media="all" rel="stylesheet" type="text/css" href="dist/qing-editor.css">
+
+	<script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
+	<script type="text/javascript" src="node_modules/qing-module/dist/qing-module.js"></script>
+	<script type="text/javascript" src="node_modules/qing-uploader/dist/qing-uploader.js"></script>
+	<script type="text/javascript" src="dist/qing-editor.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			var qingEditor = new QingEditor({
+				el: '#editor',
+				toolbar: ['title', 'bold', 'italic', 'underline', 'strikethrough', 'fontScale', 'color', '|', 'ol', 'ul', 'blockquote', 'code', 'table', '|', 'link', 'image', 'hr', '|', 'indent', 'outdent', 'alignment']
+			});
+		});
+	</script>
+
+</head>
+<body>
+	<div class="wrapper">
+		<textarea id="editor"></textarea>
+	</div>
+</body>
+</html>
