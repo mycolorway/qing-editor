@@ -6,7 +6,7 @@
  * Released under the MIT license
  * http://mycolorway.github.io/qing-editor/license.html
  *
- * Date: 2016-10-21
+ * Date: 2016-10-25
  */
 ;(function(root, factory) {
   if (typeof module === 'object' && module.exports) {
@@ -1259,7 +1259,7 @@ ImageButton = (function(superClass) {
     this.editor.uploader.on('uploadprogress', uploadProgress);
     this.editor.uploader.on('uploadsuccess', (function(_this) {
       return function(e, file, result) {
-        var $img, img_path, msg;
+        var $img, error, img_path, msg;
         if (!file.inline) {
           return;
         }
@@ -1306,7 +1306,7 @@ ImageButton = (function(superClass) {
     })(this));
     return this.editor.uploader.on('uploaderror', (function(_this) {
       return function(e, file, xhr) {
-        var $img, msg, result;
+        var $img, error, msg, result;
         if (!file.inline) {
           return;
         }
@@ -4660,7 +4660,7 @@ Selection = (function(superClass) {
   };
 
   Selection.prototype.clear = function() {
-    var e;
+    var e, error;
     try {
       this._selection.removeAllRanges();
     } catch (error) {
@@ -5637,7 +5637,7 @@ Util = (function(superClass) {
   Util.prototype.support = (function() {
     return {
       onselectionchange: (function() {
-        var e, onselectionchange;
+        var e, error, onselectionchange;
         onselectionchange = document.onselectionchange;
         if (onselectionchange !== void 0) {
           try {
@@ -5711,7 +5711,7 @@ Util = (function(superClass) {
   Util.prototype.dataURLtoBlob = function(dataURL) {
     var BlobBuilder, arrayBuffer, bb, blobArray, byteString, hasArrayBufferViewSupport, hasBlobConstructor, i, intArray, j, mimeString, ref, supportBlob;
     hasBlobConstructor = window.Blob && (function() {
-      var e;
+      var e, error;
       try {
         return Boolean(new Blob());
       } catch (error) {
@@ -5720,7 +5720,7 @@ Util = (function(superClass) {
       }
     })();
     hasArrayBufferViewSupport = hasBlobConstructor && window.Uint8Array && (function() {
-      var e;
+      var e, error;
       try {
         return new Blob([new Uint8Array(100)]).size === 100;
       } catch (error) {
@@ -5837,7 +5837,7 @@ Util = (function(superClass) {
 module.exports = new Util();
 
 },{}],"qing-editor":[function(require,module,exports){
-var Button, Clipboard, Formatter, Hotkeys, Indentation, InputManager, Keystroke, QingEditor, Selection, Toolbar, UndoManager, locales, util,
+var Button, Clipboard, Formatter, Hotkeys, Indentation, InputManager, Keystroke, Popover, QingEditor, Selection, Toolbar, UndoManager, locales, util,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
@@ -5864,6 +5864,8 @@ Indentation = require('./indentation.coffee');
 Clipboard = require('./clipboard.coffee');
 
 Button = require('./buttons/button.coffee');
+
+Popover = require('./buttons/popover.coffee');
 
 QingEditor = (function(superClass) {
   extend(QingEditor, superClass);
@@ -5904,7 +5906,7 @@ QingEditor = (function(superClass) {
   };
 
   QingEditor.prototype._init = function() {
-    var e, editor, form;
+    var e, editor, error, form;
     this.textarea = $(this.opts.el);
     this.opts.placeholder = this.opts.placeholder || this.textarea.attr('placeholder');
     this.locales = this.opts.locales;
@@ -6140,9 +6142,11 @@ QingEditor.Toolbar = Toolbar;
 
 QingEditor.Button = Button;
 
+QingEditor.Popover = Popover;
+
 module.exports = QingEditor;
 
-},{"./buttons/button.coffee":4,"./clipboard.coffee":22,"./formatter.coffee":23,"./hotkeys.coffee":24,"./i18n.coffee":25,"./indentation.coffee":26,"./input-manager.coffee":27,"./keystroke.coffee":28,"./selection.coffee":29,"./toolbar.coffee":30,"./undo-manager.coffee":31,"./util.coffee":32}]},{},[]);
+},{"./buttons/button.coffee":4,"./buttons/popover.coffee":16,"./clipboard.coffee":22,"./formatter.coffee":23,"./hotkeys.coffee":24,"./i18n.coffee":25,"./indentation.coffee":26,"./input-manager.coffee":27,"./keystroke.coffee":28,"./selection.coffee":29,"./toolbar.coffee":30,"./undo-manager.coffee":31,"./util.coffee":32}]},{},[]);
 
 return b('qing-editor');
 }));

@@ -10,6 +10,7 @@ Toolbar = require './toolbar.coffee'
 Indentation = require './indentation.coffee'
 Clipboard = require './clipboard.coffee'
 Button = require './buttons/button.coffee'
+Popover = require './buttons/popover.coffee'
 
 class QingEditor extends QingModule
 
@@ -262,5 +263,6 @@ class QingEditor extends QingModule
 
 QingEditor.Toolbar = Toolbar
 QingEditor.Button = Button
+QingEditor.Popover = Popover
 
 module.exports = QingEditor
